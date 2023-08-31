@@ -99,17 +99,16 @@ export function HeaderSearch({ setSearchResults }) {
   // キーが押された時の挙動
   const handleKeyDownSearch = async (e) => {
     // Enterキーが押された場合かつ検索内容がある場合
-    if (e.keyCode == 13 && searchTerm != "") {
+    if (e.keyCode === 13 && searchTerm !== "") {
       // 検索
       const results = await fetchSearchList(searchTerm);
       if (results) {
         // 検索結果を親のステートに渡す
         setSearchResults(results);
+        setSuggest([]);
       }
     }
   };
-
-  const items = "";
 
   return (
     <Header height={56} className={classes.header} mb={120}>
@@ -119,9 +118,6 @@ export function HeaderSearch({ setSearchResults }) {
         </Group>
 
         <Group>
-          <Group ml={50} spacing={5} className={classes.links}>
-            {items}
-          </Group>
           <Autocomplete
             className={classes.search}
             placeholder="Search"
@@ -130,6 +126,7 @@ export function HeaderSearch({ setSearchResults }) {
             onChange={setSearchTerm}
             limit={10}
             key="autocomplete"
+            value={searchTerm}
             onItemSubmit={(item) => {
               handleSubmitSearch(item);
             }}

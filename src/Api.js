@@ -32,6 +32,7 @@ export const fetchSearchList = async (keyword) => {
           type: "video",
           key: import.meta.env.VITE_API_KEY,
           videoCategoryId: "10",
+          maxResults: 50,
         },
       }
     );
