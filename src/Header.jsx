@@ -8,7 +8,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
-import { fetchSearchList, fetchSuggestion } from "./Api";
+import { fetchSearchList, fetchSuggestion } from "./api/Api";
 import { useState } from "react";
 import { useDebounce } from "react-use";
 import PropType from "prop-types";

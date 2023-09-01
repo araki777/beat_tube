@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { HeaderSearch } from "./Header";
 import Home from "./Home";
 import { useState, useEffect } from "react"; // useEffectを追加
-import { fetchDefaultSearchList } from "./Api";
+import { fetchDefaultSearchList } from "./api/Api";
 import useSWR from "swr";
 import MovieShow from "./MovieShow";
 
