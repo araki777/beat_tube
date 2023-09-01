@@ -2,6 +2,7 @@ import { Grid } from "@mantine/core";
 import PropType from "prop-types";
 import { useState } from "react";
 import { Pagination } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const Home = ({ searchResults }) => {
   const [activePage, setPage] = useState(1);
@@ -10,15 +11,21 @@ const Home = ({ searchResults }) => {
     <>
       <Grid gutter="md">
         {searchResults &&
-          searchResults.map((data, index) => (
-            <Grid.Col span={4} key={index}>
-              <iframe
-                id="player"
-                width="100%"
-                height="100%"
-                src={"https://www.youtube.com/embed/" + data.id.videoId}
-                allowFullScreen
-              />
+          searchResults.map((videoData, index) => (
+            <Grid.Col span={3} key={index}>
+              <div>
+                {/* ビデオデータを表示 */}
+                <Link
+                  to={`/movie/show/${videoData.id.videoId}`}
+                  state={videoData}
+                >
+                  <p>{videoData.snippet.channelTitle}</p>
+                  <img
+                    alt={videoData.snippet.title}
+                    src={videoData.snippet.thumbnails.default.url}
+                  />
+                </Link>
+              </div>
             </Grid.Col>
           ))}
       </Grid>
